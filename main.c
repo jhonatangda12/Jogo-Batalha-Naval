@@ -20,15 +20,22 @@ int main()
     // Vetores (arrays unidimensionais) para representar os navios:
     int navioVertical [3]= {3, 3, 3};
     int navioHorizontal [3]= {3, 3, 3}; 
+    int navioDiagonal1 [3]= {4, 4, 4};
+    int navioDiagonal2 [3]= {4, 4, 4}; 
     
     int linhaVertical = 0;      
     int linhaHorizontal = 3; // Linha onde o navio horizontal será colocado (0-9)
 
     int colunaVertical = 4; // Coluna onde o navio vertical será colocado (0-9)
-    int colunaHorizontal = 6; // Coluna de início do navio horizontal (0-9)      
+    int colunaHorizontal = 6; // Coluna de início do navio horizontal (0-9)   
     
+    int linhaDiagonal1 = 5; // linha de início do navio diagonal (0-9)
+    int colunaDiagonal1 = 3;// Coluna de início do navio diagonal (0-9)
     
-    // --- Posicionamento do Navio Vertical (Começa na linha 0, coluna 4) ---
+    int linhaDiagonal2 = 3; // linha de início do navio diagonal (0-9)
+    int colunaDiagonal2 = 2;// Coluna de início do navio diagonal (0-9)    
+    
+    // --- Posicionamento do Navio Vertical 2  ---
     for(int i = 0; i < 3; i++)
     {
         // verifica se está DENTRO dos limites 
@@ -72,6 +79,43 @@ int main()
         }
     }
 
+    // Variações das coordenadas (pode ser ajustado conforme a necessidade)
+    
+    // --- Posicionamento do Navio Diagonal 1  ---
+    for(int i = 0; i < 3; i++)
+    {
+        int proxLinha = linhaDiagonal1 + i;
+        int proxColuna = colunaDiagonal1 + i; 
+        
+        // Verifica limites do tabuleiro e se a posição está VAZIA
+        if (proxLinha < 10 && proxColuna < 10 && tabuleiro[proxLinha][proxColuna] == 0)
+        {
+            tabuleiro[proxLinha][proxColuna] = navioDiagonal1 [i]; 
+        } 
+        else // Tratamento de Erro (limite ou colisão)
+        {
+             printf("\n Erro! Posição (%d, %d) indisponível para Navio Diagonal.\n", proxLinha, proxColuna);
+             break;
+        }
+    }
+
+        for(int i = 0; i < 3; i++)
+    {
+        int proxLinha2 = linhaDiagonal2 + i;
+        int proxColuna2 = colunaDiagonal2 + i;  
+        
+        // Verifica limites do tabuleiro e se a posição está VAZIA
+        if (proxLinha2 < 10 && proxColuna2 < 10 && tabuleiro[proxLinha2][proxColuna2] == 0)
+        {
+            tabuleiro[proxLinha2][proxColuna2] = navioDiagonal2 [i]; 
+        } 
+        else // Tratamento de Erro (limite ou colisão)
+        {
+             printf("\n Erro! Posição (%d, %d) indisponível para Navio Diagonal.\n", proxLinha2, proxColuna2);
+             break;
+        }
+    }
+
     //Imprime o tabuleiro na tela
     printf("*** Jogo Batalha Naval***\n");
     
@@ -104,3 +148,5 @@ int main()
     printf("\n");
     return 0;
 }
+
+/**/
